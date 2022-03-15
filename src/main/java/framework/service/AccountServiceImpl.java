@@ -1,33 +1,28 @@
 package framework.service;
 
-import banking.model.CheckingAccount;
-import banking.model.SavingAccount;
 import banking.repository.AccountDAO;
 import banking.repository.AccountDAOImpl;
 import framework.model.Account;
-import framework.model.AccountType;
-import framework.model.Address;
-import framework.model.Customer;
 
 import java.util.Collection;
 
 public class AccountServiceImpl implements AccountService {
 
 	private AccountDAO accountDAO;
-	
-	public AccountServiceImpl(){
+	private static AccountServiceImpl instance;
+
+	private AccountServiceImpl(){
 		accountDAO = new AccountDAOImpl();
 	}
 
-	public Account createAccount(String accountNumber, String customerName, String email,
-								 Address customerAddress, AccountType accountType) {
+	public static AccountService getInstance(){
+		if(instance == null)
+			instance = new AccountServiceImpl();
 
-		Customer customer = new Customer(customerName, email,  customerAddress);
-		Account account = accountType == AccountType.Saving ? new SavingAccount(customer, accountNumber) :
-				new CheckingAccount(customer, accountNumber);
+		return instance;
+	}
 
-		account.setCustomer(customer);
-		
+	public Account saveAccount(Account account) {
 		accountDAO.saveAccount(account);
 		
 		return account;

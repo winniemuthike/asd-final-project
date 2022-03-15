@@ -1,5 +1,9 @@
 package ui.bank;
 
+import framework.model.Account;
+import framework.service.AccountService;
+import framework.service.AccountServiceImpl;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
@@ -11,7 +15,9 @@ import javax.swing.*;
  */
 public class BankFrm extends javax.swing.JFrame
 {
-    /****
+	private AccountService accountService;
+
+	/****
      * init variables in the object
      ****/
     String accountnr, clientName,street,city,zip,state,accountType,clientType,amountDeposit;
@@ -25,6 +31,8 @@ public class BankFrm extends javax.swing.JFrame
 	public BankFrm()
 	{
 		myframe = this;
+
+		accountService = AccountServiceImpl.getInstance();
 
 		setTitle("Bank Application.");
 		setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
@@ -214,6 +222,8 @@ public class BankFrm extends javax.swing.JFrame
             rowdata[3] = "P";
             rowdata[4] = accountType;
             rowdata[5] = "0";
+
+			Account account = accountService.getAccount(accountnr);
             model.addRow(rowdata);
             JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
             newaccount=false;
