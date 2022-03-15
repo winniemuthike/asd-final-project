@@ -1,4 +1,5 @@
-package edu.mum.cs.cs525.labs.exercises.project.ui.ccard;
+package ui.ccard;
+
 import java.awt.*;
 import javax.swing.*;
 
