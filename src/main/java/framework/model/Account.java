@@ -1,7 +1,6 @@
 package framework.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public abstract class Account {
@@ -9,11 +8,11 @@ public abstract class Account {
     private String accountNumber;
 
     private Customer customer;
-    private Address address;
 
     private List<AccountEntry> entryList = new ArrayList<AccountEntry>();
 
-    public Account(String accountNumber) {
+    public Account(Customer customer, String accountNumber) {
+        this.setCustomer(customer);
         this.accountNumber = accountNumber;
     }
 
@@ -64,14 +63,6 @@ public abstract class Account {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public abstract void addInterest();

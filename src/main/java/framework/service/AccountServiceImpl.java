@@ -6,22 +6,26 @@ import banking.repository.AccountDAO;
 import banking.repository.AccountDAOImpl;
 import framework.model.Account;
 import framework.model.AccountType;
+import framework.model.Address;
 import framework.model.Customer;
 
 import java.util.Collection;
 
 public class AccountServiceImpl implements AccountService {
+
 	private AccountDAO accountDAO;
 	
 	public AccountServiceImpl(){
 		accountDAO = new AccountDAOImpl();
 	}
 
-	public Account createAccount(String accountNumber, String customerName, AccountType accountType) {
+	public Account createAccount(String accountNumber, String customerName, String email,
+								 Address customerAddress, AccountType accountType) {
 
-		Account account = accountType == AccountType.Saving ? new SavingAccount(accountNumber) :
-				new CheckingAccount(accountNumber);
-		Customer customer = new Customer(customerName);
+		Customer customer = new Customer(customerName, email,  customerAddress);
+		Account account = accountType == AccountType.Saving ? new SavingAccount(customer, accountNumber) :
+				new CheckingAccount(customer, accountNumber);
+
 		account.setCustomer(customer);
 		
 		accountDAO.saveAccount(account);
@@ -50,8 +54,6 @@ public class AccountServiceImpl implements AccountService {
 		account.withdraw(amount);
 		accountDAO.updateAccount(account);
 	}
-
-
 
 	public void transferFunds(String fromAccountNumber, String toAccountNumber, double amount, String description) {
 		Account fromAccount = accountDAO.loadAccount(fromAccountNumber);

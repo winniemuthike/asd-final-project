@@ -1,10 +1,22 @@
 package banking.model;
 
+import framework.model.Address;
 import framework.model.Customer;
 
 public class CompanyAccount extends Customer {
 
-    public CompanyAccount(String name) {
-        super(name);
+    private String noOfEmployees;
+
+    public CompanyAccount(String name, String email, String noOfEmployees, Address address) {
+        super(name, email, address);
+        this.noOfEmployees = noOfEmployees;
+    }
+
+    public String getNoOfEmployees() {
+        return noOfEmployees;
+    }
+
+    public void setNoOfEmployees(String noOfEmployees) {
+        this.noOfEmployees = noOfEmployees;
     }
 }

@@ -4,8 +4,8 @@ import framework.model.Customer;
 
 public class GoldCredit extends CreditCard {
 
-    public GoldCredit(Customer customer, String accountNumber) {
-        super(customer, accountNumber);
+    public GoldCredit(Customer customer, String accountNumber, String ccNumber, String  expirationDate) {
+        super(customer, accountNumber, ccNumber, expirationDate);
     }
 
     @Override
