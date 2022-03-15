@@ -5,10 +5,16 @@ import java.util.List;
 public class Customer {
 
 	private String name;
-	List<Account> accounts;
+	private String email;
 
-	public Customer(String name) {
+	private Address address;
+
+	private List<Account> accounts;
+
+	public Customer(String name, String email, Address address) {
 		this.name = name;
+		this.email = email;
+		this.address = address;
 	}
 
 	public String getName() {
@@ -17,5 +23,29 @@ public class Customer {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 }

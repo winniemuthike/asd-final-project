@@ -1,4 +1,4 @@
-package edu.mum.cs.cs525.labs.exercises.project.ui.ccard;
+package ui.ccard;
 
 import java.awt.BorderLayout;
 
@@ -31,7 +31,7 @@ public class CardFrm extends javax.swing.JFrame
 		setTitle("Credit-card processing Application.");
 		setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout(0,0));
-		setSize(575,310);
+		setSize(600,350);
 		setVisible(false);
 		JPanel1.setLayout(null);
 		getContentPane().add(BorderLayout.CENTER, JPanel1);
