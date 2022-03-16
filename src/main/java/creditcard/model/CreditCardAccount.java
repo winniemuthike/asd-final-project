@@ -3,12 +3,16 @@ package creditcard.model;
 import framework.model.Account;
 import framework.model.Customer;
 
-public abstract class CreditCard extends Account {
+public abstract class CreditCardAccount extends Account {
 
     private String ccNumber;
     private String  expirationDate;
 
-    public CreditCard(Customer customer, String accountNumber, String ccNumber, String  expirationDate) {
+    public CreditCardAccount(Customer customer, String accountNumber) {
+        super(customer, accountNumber);
+    }
+
+    public CreditCardAccount(Customer customer, String accountNumber, String ccNumber, String  expirationDate) {
         super(customer, accountNumber);
 
         this.ccNumber = ccNumber;

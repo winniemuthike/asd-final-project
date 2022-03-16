@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class AccountDAOImpl implements AccountDAO {
-	Collection<Account> accountlist = new ArrayList<Account>();
+	static Collection<Account> accountlist = new ArrayList<Account>();
 
 	public void saveAccount(Account account) {
 		accountlist.add(account); // add the new
