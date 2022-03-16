@@ -10,6 +10,10 @@ public class CheckingAccount extends Account {
     }
 
     @Override
+    public void withdraw(double amount){
+        super.withdraw(amount);
+    }
+    @Override
     public void addInterest() {
     }
 }
