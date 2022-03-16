@@ -16,9 +16,8 @@ public static final Double INTEREST_RATE = 0.06;
         double interest = currentBalance* INTEREST_RATE;
         System.out.println("intterest:: "+ interest);
         this.deposit(interest);
-
-//        getCustomer().getAccounts().forEach( account -> account.deposit(interest) );
-//this.getBalance();
+        getCustomer().getAccounts().forEach( account -> account.deposit(interest) );
+this.getBalance();
     }
 
 }
