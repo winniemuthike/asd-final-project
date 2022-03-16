@@ -1,4 +1,4 @@
-package framework.NotificationSystem;
+package framework.notification;
 
 import javax.mail.*;
 import javax.mail.internet.AddressException;
@@ -6,7 +6,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class EmailNotifier implements Observer{
+public class EmailObserver implements Observer {
 
     @Override
     public void send(String destination, String outgoingMessage) {

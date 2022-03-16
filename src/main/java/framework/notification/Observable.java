@@ -1,4 +1,4 @@
-package framework.NotificationSystem;
+package framework.notification;
 
 public interface Observable {
     void add(Observer o);

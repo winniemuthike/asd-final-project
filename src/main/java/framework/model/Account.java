@@ -1,8 +1,8 @@
 package framework.model;
 
-import framework.NotificationSystem.EmailNotifier;
-import framework.NotificationSystem.Observable;
-import framework.NotificationSystem.Observer;
+import framework.notification.EmailObserver;
+import framework.notification.Observable;
+import framework.notification.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public abstract class Account implements Observable {
     public Account(Customer customer, String accountNumber) {
         this.setCustomer(customer);
         this.accountNumber = accountNumber;
-        add(new EmailNotifier());
+        add(new EmailObserver());
     }
 
     public double getBalance() {

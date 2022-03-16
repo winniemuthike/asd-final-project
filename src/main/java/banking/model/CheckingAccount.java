@@ -1,6 +1,5 @@
 package banking.model;
 
-import framework.NotificationSystem.Observer;
 import framework.model.Account;
 import framework.model.Customer;
 
