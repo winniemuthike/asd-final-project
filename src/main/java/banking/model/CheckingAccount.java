@@ -1,5 +1,6 @@
 package banking.model;
 
+import framework.NotificationSystem.Observer;
 import framework.model.Account;
 import framework.model.Customer;
 
@@ -11,5 +12,8 @@ public class CheckingAccount extends Account {
 
     @Override
     public void addInterest() {
+
     }
+
+
 }
