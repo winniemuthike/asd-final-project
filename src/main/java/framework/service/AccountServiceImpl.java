@@ -31,11 +31,16 @@ public class AccountServiceImpl implements AccountService {
         return account;
     }
 
-    public void deposit(String accountNumber, double amount) {
+    public void deposit(String accountNumber, double amount) throws Exception {
         Account account = accountDAO.loadAccount(accountNumber);
-        account.deposit(amount);
-
-        accountDAO.updateAccount(account);
+        if(account == null) {
+            throw new Exception("Account Not Found!");
+        } else if(amount < 0) {
+            throw new Exception("Can't Deposit a negative amount!");
+        } else {
+            account.deposit(amount);
+            accountDAO.updateAccount(account);
+        }
     }
 
     public Account getAccount(String accountNumber) {
