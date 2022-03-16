@@ -19,7 +19,12 @@ public class BronzeCredit extends CreditCardAccount {
     public BronzeCredit(Customer customer, String accountNumber, String ccNumber, String expirationDate) {
         super(customer, accountNumber, ccNumber, expirationDate);
     }
-
+    @Override
+    public  void  withdraw(double amount){
+        if(amount>400)
+            notifyObservers("you are charged for more than $400"+ amount);
+        super.withdraw(amount);
+    }
     @Override
     public void addInterest() {
 
