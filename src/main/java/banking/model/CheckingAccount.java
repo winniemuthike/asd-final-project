@@ -11,6 +11,9 @@ public class CheckingAccount extends Account {
 
     @Override
     public void withdraw(double amount){
+        if(amount > 100)
+            notifyObservers("Transaction over 100$");
+
         super.withdraw(amount);
     }
     @Override
