@@ -1,9 +1,13 @@
 package framework.model;
 
+import framework.notification.EmailObserver;
+import framework.notification.Observable;
+import framework.notification.Observer;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Account {
+public abstract class Account implements Observable {
 
     private String accountNumber;
 
@@ -11,9 +15,12 @@ public abstract class Account {
 
     private List<AccountEntry> entryList = new ArrayList<AccountEntry>();
 
+    private List<Observer> observers = new ArrayList<>();
+
     public Account(Customer customer, String accountNumber) {
         this.setCustomer(customer);
         this.accountNumber = accountNumber;
+        add(new EmailObserver());
     }
 
     public double getBalance() {
@@ -27,11 +34,13 @@ public abstract class Account {
     public void deposit(double amount) {
         AccountEntry entry = new AccountEntry(amount, "deposit", "", "");
         entryList.add(entry);
+//        notifyObservers("The amount " + amount + " has been depoited");
     }
 
     public void withdraw(double amount) {
         AccountEntry entry = new AccountEntry(-amount, "withdraw", "", "");
         entryList.add(entry);
+
     }
 
     private void addEntry(AccountEntry entry) {
@@ -66,4 +75,18 @@ public abstract class Account {
     }
 
     public abstract void addInterest();
+
+    public void add(Observer o) {
+        observers.add(o);
+    }
+
+    public void remove(Observer o) {
+        observers.remove(o);
+    }
+
+    public void notifyObservers(String message) {
+        for (Observer o : observers) {
+            o.send(this.getCustomer().getEmail(), message);
+        }
+    }
 }
