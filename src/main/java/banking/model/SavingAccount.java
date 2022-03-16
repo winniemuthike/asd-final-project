@@ -11,6 +11,8 @@ public class SavingAccount extends Account {
 
     @Override
     public void withdraw(double amount){
+        if(amount>500)
+            notifyObservers("Transaction over $500");
         super.withdraw(amount);
     }
     @Override

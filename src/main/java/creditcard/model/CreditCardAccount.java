@@ -34,4 +34,11 @@ public abstract class CreditCardAccount extends Account {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+
+    @Override
+    public  void  withdraw(double amount){
+        if(amount>400)
+            notifyObservers("you are charged for more than $400");
+        super.withdraw(amount);
+    }
 }

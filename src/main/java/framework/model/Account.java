@@ -38,6 +38,7 @@ public abstract class Account implements Observable {
     }
 
     public void withdraw(double amount) {
+
         AccountEntry entry = new AccountEntry(-amount, "withdraw", "", "");
         entryList.add(entry);
 
@@ -89,4 +90,8 @@ public abstract class Account implements Observable {
             o.send(this.getCustomer().getEmail(), message);
         }
     }
+
+      /*When a deposit or withdrawal is done to a company account, the system sends the company an
+        Email about the transaction.*/
+
 }
